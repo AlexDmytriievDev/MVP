@@ -1,0 +1,80 @@
+buildscript {
+
+    repositories {
+        google()
+        jcenter()
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:4.0.1'
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+ext {
+    //  App
+    applicationId = "com.example.gitmvpapp"
+    compileSdkVersion = 30
+    targetSdkVersion = 30
+    minSdkVersion = 21
+
+    versionCode = 1
+    versionName = "1.0.0"
+
+    //  Build variants
+    productionAppName = "@string/app_name_prod"
+    productionAppIcon = "@drawable/ic_app"
+
+    stagingAppName = "@string/app_name_stage"
+    stagingAppIcon = "@drawable/ic_app_stg"
+
+    developAppName = "@string/app_name_dev"
+    developAppIcon = "@drawable/ic_app_dev"
+
+    //  Libraries versions
+    junitVersion = '4.12'
+    extJunitVersion = '1.1.2'
+    espressoVersion = '3.3.0'
+
+    cardViewVersion = '1.0.0'
+    appcompatVersion = '1.2.0'
+    materialVersion = '1.2.1'
+    constraintLayoutVersion = '2.0.1'
+
+    annotationVersion = '1.1.0'
+    lifecycleVersion = '2.2.0'
+
+    rxjavaVersion = '2.2.10'
+    rxandroidVersion = '2.1.1'
+    rxbindingVersion = '2.2.0'
+
+    daggerVersion = '2.24'
+    daggerСompilerVersion = '2.22.1'
+
+    retrofitVersion = '2.5.0'
+    okioVersion = '2.2.2'
+    okhttpVersion = '4.0.0-alpha01'
+    loggingInterceptorVersion = '4.0.0-alpha01'
+
+    butterKnifeVersion = '10.2.0'
+    timberVersion = '4.7.1'
+    glideVersion = '4.11.0'
+    glideSVGVersion = 'v2.0.0'
+
+    imageCropperVersion = '2.8.0'
+    dexterVersion = '5.0.0'
+}

@@ -1,0 +1,145 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+
+    defaultConfig {
+        applicationId rootProject.ext.applicationId
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+    }
+
+    signingConfigs {
+        debug {
+        }
+
+        release {
+        }
+    }
+
+    def TRUE = "true"
+    def FALSE = "false"
+    def BOOLEAN = "boolean"
+    def ENABLE_CRASHLYTICS = "ENABLE_CRASHLYTICS"
+
+    buildTypes {
+        release {
+            debuggable false
+            jniDebuggable false
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+            buildConfigField BOOLEAN, ENABLE_CRASHLYTICS, TRUE
+        }
+
+        debug {
+            debuggable true
+            jniDebuggable true
+            signingConfig signingConfigs.debug
+            buildConfigField BOOLEAN, ENABLE_CRASHLYTICS, FALSE
+        }
+    }
+
+    flavorDimensions "versionCode"
+
+    productFlavors {
+        production {
+            manifestPlaceholders = [
+                    appName: rootProject.ext.productionAppName,
+                    appIcon: rootProject.ext.productionAppIcon
+            ]
+        }
+
+        staging {
+            applicationIdSuffix '.staging'
+            manifestPlaceholders = [
+                    appName: rootProject.ext.stagingAppName,
+                    appIcon: rootProject.ext.stagingAppIcon
+            ]
+        }
+
+        develop {
+            applicationIdSuffix '.develop'
+            manifestPlaceholders = [
+                    appName: rootProject.ext.developAppName,
+                    appIcon: rootProject.ext.developAppIcon
+            ]
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "MVP_${variant.name}_${variant.versionName}[${variant.versionCode}].apk"
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+
+    testImplementation "junit:junit:${rootProject.ext.junitVersion}"
+    androidTestImplementation "androidx.test.ext:junit:${rootProject.ext.extJunitVersion}"
+    androidTestImplementation "androidx.test.espresso:espresso-core:${rootProject.ext.espressoVersion}"
+
+    // Support library
+    implementation "androidx.cardview:cardview:${rootProject.ext.cardViewVersion}"
+    implementation "androidx.appcompat:appcompat:${rootProject.ext.appcompatVersion}"
+    implementation "com.google.android.material:material:${rootProject.ext.materialVersion}"
+    implementation "androidx.constraintlayout:constraintlayout:${rootProject.ext.constraintLayoutVersion}"
+
+    // Google extensions
+    implementation "androidx.annotation:annotation:${rootProject.ext.annotationVersion}"
+    implementation "androidx.lifecycle:lifecycle-extensions:${rootProject.ext.lifecycleVersion}"
+
+    // Rx Java + Rx Android
+    implementation "io.reactivex.rxjava2:rxjava:${rootProject.ext.rxjavaVersion}"
+    implementation "io.reactivex.rxjava2:rxandroid:${rootProject.ext.rxandroidVersion}"
+    implementation "com.jakewharton.rxbinding2:rxbinding:${rootProject.ext.rxbindingVersion}"
+
+    // Dagger2
+    implementation "com.google.dagger:dagger:${rootProject.ext.daggerVersion}"
+    annotationProcessor "com.google.dagger:dagger-compiler:${rootProject.ext.daggerСompilerVersion}"
+
+    // Retrofit
+    implementation "com.squareup.retrofit2:retrofit:${rootProject.ext.retrofitVersion}"
+    implementation "com.squareup.retrofit2:converter-gson:${rootProject.ext.retrofitVersion}"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:${rootProject.ext.retrofitVersion}"
+    implementation "com.squareup.retrofit2:converter-simplexml:${rootProject.ext.retrofitVersion}"
+    implementation "com.squareup.okio:okio:${rootProject.ext.okioVersion}"
+    implementation "com.squareup.okhttp3:okhttp:${rootProject.ext.okhttpVersion}"
+    implementation "com.squareup.okhttp3:logging-interceptor:${rootProject.ext.loggingInterceptorVersion}"
+
+    // ButterKnife
+    implementation "com.jakewharton:butterknife:${rootProject.ext.butterKnifeVersion}"
+    annotationProcessor "com.jakewharton:butterknife-compiler:${rootProject.ext.butterKnifeVersion}"
+
+    // Timber
+    implementation "com.jakewharton.timber:timber:${rootProject.ext.timberVersion}"
+
+    // Glide
+    implementation "com.github.bumptech.glide:glide:${rootProject.ext.glideVersion}"
+    annotationProcessor "com.github.bumptech.glide:compiler:${rootProject.ext.glideVersion}"
+    implementation "com.github.corouteam:GlideToVectorYou:${rootProject.ext.glideSVGVersion}"
+
+    // Photo cropper
+    implementation "com.theartofdev.edmodo:android-image-cropper:${rootProject.ext.imageCropperVersion}"
+
+    // Permissions manager
+    implementation "com.karumi:dexter:${rootProject.ext.dexterVersion}"
+}

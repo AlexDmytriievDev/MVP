@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">Study</string>
+
+    <!--App names-->
+    <string name="app_name_prod">MVP</string>
+    <string name="app_name_dev">MVP [D]</string>
+    <string name="app_name_stage">MVP [S]</string>
+    <string name="app_version">Version</string>
+
 </resources>

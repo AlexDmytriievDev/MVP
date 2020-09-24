@@ -1,6 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#03DAC5</color>
+
+    <color name="colorPrimary">#e3e3e3</color>
+    <color name="colorPrimaryDark">#757575</color>
+    <color name="colorAccent">#1088ff</color>
+
+    <color name="red">#ff000a</color>
+    <color name="guardsmanRed">#cc0000</color>
+    <color name="alizarinCrimson">#ea3122</color>
+    <color name="malachite">#18db42</color>
+    <color name="yellow">#FFEB3B</color>
+    <color name="kashmirBlue">#527798</color>
+    <color name="shakespeareLight">#D093C4E0</color>
+    <color name="dodgerBlue">#1088ff</color>
+    <color name="dodgerBlueLight">#4CA4FB</color>
+    <color name="dodgerBlueTransparent">#9269ACFF</color>
+    <color name="white">#ffffff</color>
+    <color name="aquaHaze">#ebf1f4</color>
+    <color name="whiteTransparent">#05FFFFFF</color>
+    <color name="pampas">#f4f0ec</color>
+    <color name="pampasTransparent">#32F4F0EC</color>
+    <color name="mercury">#e3e3e3</color>
+    <color name="mercuryDark">#CECDCD</color>
+    <color name="wildSand">#f4f4f4</color>
+    <color name="loblolly">#c2c8cc</color>
+    <color name="silverDark">#bbbbbb</color>
+    <color name="silverChalice">#b2b2b2</color>
+    <color name="boulder">#747474</color>
+    <color name="boulderDark">#757575</color>
+    <color name="rollingStone">#73797e</color>
+    <color name="lightTransparent">#4CFFFFFF</color>
+    <color name="abbey">#494f55</color>
+    <color name="capeCod">#3e4143</color>
+    <color name="capeCodTransparent">#263E4143</color>
+    <color name="abbey30">#4D494F55</color>
+    <color name="transparent">#00000000</color>
+    <color name="mineShaft">#333333</color>
+    <color name="mineShaftDark">#212121</color>
+    <color name="woodsmokeTransparent">#A3161619</color>
+    <color name="black">#000000</color>
 </resources>

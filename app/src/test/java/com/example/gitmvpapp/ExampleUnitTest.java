@@ -1,4 +1,4 @@
-package com.example.study;
+package com.example.gitmvpapp;
 
 import org.junit.Test;
 

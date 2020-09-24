@@ -1,10 +1,39 @@
 <resources>
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:navigationBarColor">@color/pampas</item>
+    </style>
+
+    <style name="SplashActivityTheme" parent="AppTheme">
+        <item name="colorPrimaryDark">@android:color/transparent</item>
+        <item name="android:windowTranslucentStatus">true</item>
+    </style>
+
+    <style name="ThemeTextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textColor">@color/capeCod</item>
+        <item name="android:lineSpacingExtra">5sp</item>
+    </style>
+
+    <style name="FontTextViewLight" parent="ThemeTextView">
+        <item name="android:fontFamily">@font/font_inter_light_beta</item>
+    </style>
+
+    <style name="FontTextViewRegular" parent="ThemeTextView">
+        <item name="android:fontFamily">@font/font_inter_regular</item>
+    </style>
+
+    <style name="FontTextViewSemiBold" parent="ThemeTextView">
+        <item name="android:fontFamily">@font/font_inter_semi_bold</item>
+    </style>
+
+    <style name="FontTextViewBold" parent="ThemeTextView">
+        <item name="android:fontFamily">@font/font_inter_bold</item>
     </style>
 
 </resources>
