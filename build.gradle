@@ -36,12 +36,15 @@ ext {
     versionName = "1.0.0"
 
     //  Build variants
+    productionBaseUrl = "stub"
     productionAppName = "@string/app_name_prod"
     productionAppIcon = "@drawable/ic_app"
 
+    stagingBaseUrl = "stub"
     stagingAppName = "@string/app_name_stage"
     stagingAppIcon = "@drawable/ic_app_stg"
 
+    developBaseUrl = "stub"
     developAppName = "@string/app_name_dev"
     developAppIcon = "@drawable/ic_app_dev"
 

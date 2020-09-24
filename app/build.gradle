@@ -19,11 +19,6 @@ android {
         }
     }
 
-    def TRUE = "true"
-    def FALSE = "false"
-    def BOOLEAN = "boolean"
-    def ENABLE_CRASHLYTICS = "ENABLE_CRASHLYTICS"
-
     buildTypes {
         release {
             debuggable false
@@ -31,21 +26,22 @@ android {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
-            buildConfigField BOOLEAN, ENABLE_CRASHLYTICS, TRUE
         }
 
         debug {
             debuggable true
             jniDebuggable true
             signingConfig signingConfigs.debug
-            buildConfigField BOOLEAN, ENABLE_CRASHLYTICS, FALSE
         }
     }
 
+    def STRING = "String"
+    def BASE_URL = "BASE_URL"
     flavorDimensions "versionCode"
 
     productFlavors {
         production {
+            buildConfigField STRING, BASE_URL, rootProject.ext.productionBaseUrl
             manifestPlaceholders = [
                     appName: rootProject.ext.productionAppName,
                     appIcon: rootProject.ext.productionAppIcon
@@ -54,6 +50,7 @@ android {
 
         staging {
             applicationIdSuffix '.staging'
+            buildConfigField STRING, BASE_URL, rootProject.ext.stagingBaseUrl
             manifestPlaceholders = [
                     appName: rootProject.ext.stagingAppName,
                     appIcon: rootProject.ext.stagingAppIcon
@@ -62,6 +59,7 @@ android {
 
         develop {
             applicationIdSuffix '.develop'
+            buildConfigField STRING, BASE_URL, rootProject.ext.developBaseUrl
             manifestPlaceholders = [
                     appName: rootProject.ext.developAppName,
                     appIcon: rootProject.ext.developAppIcon
