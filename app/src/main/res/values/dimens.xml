@@ -1,0 +1,16 @@
+<resources>
+
+    <!--  View Alert Dialog  -->
+    <dimen name="view_alert_dialog_base_padding">20dp</dimen>
+    <dimen name="view_alert_dialog_base_padding_end">25dp</dimen>
+    <dimen name="view_alert_dialog_base_margin">20dp</dimen>
+    <dimen name="view_alert_dialog_title_text_size">22sp</dimen>
+    <dimen name="view_alert_dialog_base_text_size">18sp</dimen>
+    <dimen name="view_alert_dialog_cancel_margin">30dp</dimen>
+    <dimen name="view_alert_dialog_btn_padding">5dp</dimen>
+    <dimen name="view_alert_dialog_confirm_margin">25dp</dimen>
+
+    <!--  Splash screen  -->
+    <dimen name="splash_description_text_size">34sp</dimen>
+
+</resources>

@@ -6,4 +6,14 @@
     <string name="app_name_stage">MVP [S]</string>
     <string name="app_version">Version</string>
 
+    <!--General-->
+    <string name="ok">Ok</string>
+    <string name="mvp">MVP</string>
+    <string name="error">Error</string>
+    <string name="camera">Camera</string>
+    <string name="cancel">Cancel</string>
+    <string name="storage">Storage</string>
+    <string name="open_pdf">Open PDF</string>
+    <string name="permissions_request">We need this permissions</string>
+    <string name="settings_permission_explanation">To continue need to enable camera permissions</string>
 </resources>
