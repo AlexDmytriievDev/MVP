@@ -14,6 +14,11 @@
     <string name="cancel">Cancel</string>
     <string name="storage">Storage</string>
     <string name="open_pdf">Open PDF</string>
+    <string name="foreground_state">Application go to: FOREGROUND</string>
+    <string name="background_state">Application go to: BACKGROUND</string>
     <string name="permissions_request">We need this permissions</string>
+    <string name="permissions_temporary_denied">Temporary denied</string>
+    <string name="permissions_permanently_denied">Permanently denied</string>
+    <string name="cropped_image_data_empty">Cropped image data is null</string>
     <string name="settings_permission_explanation">To continue need to enable camera permissions</string>
 </resources>

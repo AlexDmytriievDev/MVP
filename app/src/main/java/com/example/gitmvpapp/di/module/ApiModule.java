@@ -2,11 +2,8 @@ package com.example.gitmvpapp.di.module;
 
 import com.example.gitmvpapp.BuildConfig;
 import com.example.gitmvpapp.di.scope.PerApplication;
-import com.example.gitmvpapp.network.Constants;
 import com.example.gitmvpapp.network.RestApi;
-import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
 import dagger.Module;
 import dagger.Provides;
@@ -34,19 +31,5 @@ public class ApiModule {
                 .baseUrl(BuildConfig.BASE_URL)
                 .client(okHttpClient)
                 .build();
-    }
-
-    @Provides
-    @PerApplication
-    Gson provideGson() {
-        return new GsonBuilder()
-                .setFieldNamingStrategy(field -> FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES
-                        .translateName(field).substring(2).toLowerCase())
-                .setDateFormat(Constants.GSON_BASE_DATE_FORMAT)
-                .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
-                .setPrettyPrinting()
-                .serializeNulls()
-                .setLenient()
-                .create();
     }
 }

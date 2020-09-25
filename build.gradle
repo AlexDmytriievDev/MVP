@@ -36,15 +36,15 @@ ext {
     versionName = "1.0.0"
 
     //  Build variants
-    productionBaseUrl = "stub"
+    productionBaseUrl = "\"https://stub.com/\""
     productionAppName = "@string/app_name_prod"
     productionAppIcon = "@drawable/ic_app"
 
-    stagingBaseUrl = "stub"
+    stagingBaseUrl = "\"https://stub.com/\""
     stagingAppName = "@string/app_name_stage"
     stagingAppIcon = "@drawable/ic_app_stg"
 
-    developBaseUrl = "stub"
+    developBaseUrl = "\"https://stub.com/\""
     developAppName = "@string/app_name_dev"
     developAppIcon = "@drawable/ic_app_dev"
 
@@ -58,6 +58,8 @@ ext {
     materialVersion = '1.2.1'
     constraintLayoutVersion = '2.0.1'
 
+    moxyVersion = '1.7.0'
+
     annotationVersion = '1.1.0'
     lifecycleVersion = '2.2.0'
 
@@ -70,8 +72,8 @@ ext {
 
     retrofitVersion = '2.5.0'
     okioVersion = '2.2.2'
-    okhttpVersion = '4.0.0-alpha01'
-    loggingInterceptorVersion = '4.0.0-alpha01'
+    okhttpVersion = '4.9.0'
+    loggingInterceptorVersion = '4.9.0'
 
     butterKnifeVersion = '10.2.0'
     timberVersion = '4.7.1'

@@ -95,22 +95,27 @@ dependencies {
     androidTestImplementation "androidx.test.ext:junit:${rootProject.ext.extJunitVersion}"
     androidTestImplementation "androidx.test.espresso:espresso-core:${rootProject.ext.espressoVersion}"
 
-    // Support library
+    // Support
     implementation "androidx.cardview:cardview:${rootProject.ext.cardViewVersion}"
     implementation "androidx.appcompat:appcompat:${rootProject.ext.appcompatVersion}"
     implementation "com.google.android.material:material:${rootProject.ext.materialVersion}"
     implementation "androidx.constraintlayout:constraintlayout:${rootProject.ext.constraintLayoutVersion}"
 
+    // MVP
+    implementation "tech.schoolhelper:moxy-x:${rootProject.ext.moxyVersion}"
+    implementation "tech.schoolhelper:moxy-x-android:${rootProject.ext.moxyVersion}"
+    annotationProcessor "tech.schoolhelper:moxy-x-compiler:${rootProject.ext.moxyVersion}"
+
     // Google extensions
     implementation "androidx.annotation:annotation:${rootProject.ext.annotationVersion}"
     implementation "androidx.lifecycle:lifecycle-extensions:${rootProject.ext.lifecycleVersion}"
 
-    // Rx Java + Rx Android
+    // Rx
     implementation "io.reactivex.rxjava2:rxjava:${rootProject.ext.rxjavaVersion}"
     implementation "io.reactivex.rxjava2:rxandroid:${rootProject.ext.rxandroidVersion}"
     implementation "com.jakewharton.rxbinding2:rxbinding:${rootProject.ext.rxbindingVersion}"
 
-    // Dagger2
+    // Dagger
     implementation "com.google.dagger:dagger:${rootProject.ext.daggerVersion}"
     annotationProcessor "com.google.dagger:dagger-compiler:${rootProject.ext.daggerСompilerVersion}"
 
@@ -138,6 +143,6 @@ dependencies {
     // Photo cropper
     implementation "com.theartofdev.edmodo:android-image-cropper:${rootProject.ext.imageCropperVersion}"
 
-    // Permissions manager
+    // Permissions
     implementation "com.karumi:dexter:${rootProject.ext.dexterVersion}"
 }
