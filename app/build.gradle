@@ -37,11 +37,13 @@ android {
 
     def STRING = "String"
     def BASE_URL = "BASE_URL"
+    def DB_NAME = "DB_NAME"
     flavorDimensions "versionCode"
 
     productFlavors {
         production {
             buildConfigField STRING, BASE_URL, rootProject.ext.productionBaseUrl
+            buildConfigField STRING, DB_NAME, rootProject.ext.productionDatabaseName
             manifestPlaceholders = [
                     appName: rootProject.ext.productionAppName,
                     appIcon: rootProject.ext.productionAppIcon
@@ -51,6 +53,7 @@ android {
         staging {
             applicationIdSuffix '.staging'
             buildConfigField STRING, BASE_URL, rootProject.ext.stagingBaseUrl
+            buildConfigField STRING, DB_NAME, rootProject.ext.stagingDatabaseName
             manifestPlaceholders = [
                     appName: rootProject.ext.stagingAppName,
                     appIcon: rootProject.ext.stagingAppIcon
@@ -60,6 +63,7 @@ android {
         develop {
             applicationIdSuffix '.develop'
             buildConfigField STRING, BASE_URL, rootProject.ext.developBaseUrl
+            buildConfigField STRING, DB_NAME, rootProject.ext.developDatabaseName
             manifestPlaceholders = [
                     appName: rootProject.ext.developAppName,
                     appIcon: rootProject.ext.developAppIcon
@@ -118,6 +122,11 @@ dependencies {
     // Dagger
     implementation "com.google.dagger:dagger:${rootProject.ext.daggerVersion}"
     annotationProcessor "com.google.dagger:dagger-compiler:${rootProject.ext.daggerСompilerVersion}"
+
+    // Database
+    implementation "androidx.room:room-runtime:${rootProject.ext.roomVersion}"
+    annotationProcessor "androidx.room:room-compiler:${rootProject.ext.roomVersion}"
+    implementation "androidx.room:room-rxjava2:${rootProject.ext.roomVersion}"
 
     // Retrofit
     implementation "com.squareup.retrofit2:retrofit:${rootProject.ext.retrofitVersion}"

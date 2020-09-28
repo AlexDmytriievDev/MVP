@@ -39,14 +39,17 @@ ext {
     productionBaseUrl = "\"https://stub.com/\""
     productionAppName = "@string/app_name_prod"
     productionAppIcon = "@drawable/ic_app"
+    productionDatabaseName = "\"database-production\""
 
     stagingBaseUrl = "\"https://stub.com/\""
     stagingAppName = "@string/app_name_stage"
     stagingAppIcon = "@drawable/ic_app_stg"
+    stagingDatabaseName = "\"database-staging\""
 
     developBaseUrl = "\"https://stub.com/\""
     developAppName = "@string/app_name_dev"
     developAppIcon = "@drawable/ic_app_dev"
+    developDatabaseName = "\"database-develop\""
 
     //  Libraries versions
     junitVersion = '4.12'
@@ -69,6 +72,8 @@ ext {
 
     daggerVersion = '2.24'
     daggerСompilerVersion = '2.22.1'
+
+    roomVersion = '2.2.5'
 
     retrofitVersion = '2.5.0'
     okioVersion = '2.2.2'

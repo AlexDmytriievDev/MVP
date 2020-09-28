@@ -8,7 +8,7 @@ import com.example.gitmvpapp.di.qualifier.HeaderInterceptor;
 import com.example.gitmvpapp.di.qualifier.LoggingInterceptor;
 import com.example.gitmvpapp.di.qualifier.NetworkInterceptor;
 import com.example.gitmvpapp.di.scope.PerApplication;
-import com.example.gitmvpapp.network.Constants;
+import com.example.gitmvpapp.utils.Constants;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

@@ -5,7 +5,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.IntDef;
 
-import com.example.gitmvpapp.model.base.BaseResponse;
+import com.example.gitmvpapp.model.BaseResponse;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

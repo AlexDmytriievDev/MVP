@@ -11,9 +11,9 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 
 import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
-import static com.example.gitmvpapp.network.Constants.INTERACTION.HTTPS_URI;
-import static com.example.gitmvpapp.network.Constants.INTERACTION.HTTP_URI;
-import static com.example.gitmvpapp.network.Constants.INTERACTION.PACKAGE;
+import static com.example.gitmvpapp.utils.Constants.INTERACTION.HTTPS_URI;
+import static com.example.gitmvpapp.utils.Constants.INTERACTION.HTTP_URI;
+import static com.example.gitmvpapp.utils.Constants.INTERACTION.PACKAGE;
 
 public class InteractionUtils {
 

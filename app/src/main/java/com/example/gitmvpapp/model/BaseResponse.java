@@ -1,10 +1,10 @@
-package com.example.gitmvpapp.model.base;
+package com.example.gitmvpapp.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
 import com.example.gitmvpapp.exceptions.InternalException;
-import com.example.gitmvpapp.network.Constants;
+import com.example.gitmvpapp.utils.Constants;
 import com.google.gson.annotations.SerializedName;
 
 public class BaseResponse implements Parcelable {

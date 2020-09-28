@@ -1,10 +1,10 @@
-package com.example.gitmvpapp.network;
+package com.example.gitmvpapp.utils;
 
 public class Constants {
 
-    static final class API {
+    public static final class API {
 
-        static final String TEST = "TEST";
+        public static final String TEST = "TEST";
     }
 
     public static final class CHAR {
@@ -48,7 +48,11 @@ public class Constants {
     //  Server
     public static final String ID = "id";
     public static final String CODE = "code";
+    public static final String USERS = "users";
     public static final String MESSAGE = "message";
+    public static final String FIRST_NAME = "firstName";
+    public static final String LAST_NAME = "lastName";
+    public static final String AVATAR_URL = "avatarUrl";
 
     //  Date
     public static final String GSON_BASE_DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:ssZ";
