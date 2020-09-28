@@ -12,9 +12,9 @@ import java.util.Map;
 
 import io.reactivex.Observable;
 
-import static com.example.gitmvpapp.network.Constants.CHAR.AMPERSAND;
-import static com.example.gitmvpapp.network.Constants.CHAR.EQUALLY;
-import static com.example.gitmvpapp.network.Constants.CONFIG.WEB_VIEW_ENCODING;
+import static com.example.gitmvpapp.utils.Constants.CHAR.AMPERSAND;
+import static com.example.gitmvpapp.utils.Constants.CHAR.EQUALLY;
+import static com.example.gitmvpapp.utils.Constants.CONFIG.WEB_VIEW_ENCODING;
 
 
 public class NetworkUtils {

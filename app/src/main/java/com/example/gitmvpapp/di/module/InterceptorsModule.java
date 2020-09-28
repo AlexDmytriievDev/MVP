@@ -13,7 +13,7 @@ import com.example.gitmvpapp.di.scope.PerApplication;
 import com.example.gitmvpapp.exceptions.InternalException;
 import com.example.gitmvpapp.exceptions.NoInternetException;
 import com.example.gitmvpapp.exceptions.ResponseException;
-import com.example.gitmvpapp.model.base.BaseResponse;
+import com.example.gitmvpapp.model.BaseResponse;
 import com.example.gitmvpapp.utils.NetworkUtils;
 import com.google.gson.Gson;
 

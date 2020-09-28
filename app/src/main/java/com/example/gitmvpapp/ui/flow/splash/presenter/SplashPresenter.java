@@ -6,8 +6,8 @@ import androidx.lifecycle.OnLifecycleEvent;
 
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
-import com.example.gitmvpapp.model.user.User;
-import com.example.gitmvpapp.network.Repository;
+import com.example.gitmvpapp.database.LocalRepository;
+import com.example.gitmvpapp.model.User;
 import com.example.gitmvpapp.ui.flow.splash.contract.SplashView;
 import com.example.gitmvpapp.utils.RxUtils;
 
@@ -16,6 +16,7 @@ import javax.inject.Inject;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
+import timber.log.Timber;
 
 @InjectViewState
 public class SplashPresenter extends MvpPresenter<SplashView> implements LifecycleObserver {
@@ -26,18 +27,20 @@ public class SplashPresenter extends MvpPresenter<SplashView> implements Lifecyc
     RxUtils rxUtils;
 
     @Inject
-    Repository repository;
+    LocalRepository localRepository;
 
     @Inject
     CompositeDisposable disposables;
 
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
     public void onCreate() {
-        disposables.add(rxUtils.zipWithTimer(repository.getUser(), SPLASH_SEC_DELAY)
+        disposables.add(rxUtils.zipWithTimer(localRepository.getUser(), SPLASH_SEC_DELAY)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(this::setupUser, error ->
-                        getViewState().showError(error.getMessage())));
+                .subscribe(this::setupUser, error -> {
+                    Timber.e(error);
+                    getViewState().openLoginScreen();
+                }));
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
@@ -46,7 +49,7 @@ public class SplashPresenter extends MvpPresenter<SplashView> implements Lifecyc
     }
 
     private void setupUser(User user) {
-        if (user != null && user.isExist()) {
+        if (user != null && user.hasFullName()) {
             getViewState().openMainScreen();
         } else {
             getViewState().openLoginScreen();
