@@ -1,6 +1,6 @@
 package com.example.gitmvpapp.network;
 
-import com.example.gitmvpapp.model.base.BaseResponse;
+import com.example.gitmvpapp.model.user.User;
 
 import io.reactivex.Single;
 
@@ -13,7 +13,7 @@ public class RepositoryImpl implements Repository {
     }
 
     @Override
-    public Single<BaseResponse> getBaseResponse() {
-        return restApi.getBaseResponse();
+    public Single<User> getUser() {
+        return Single.just(new User());
     }
 }

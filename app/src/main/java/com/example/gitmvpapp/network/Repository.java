@@ -1,10 +1,10 @@
 package com.example.gitmvpapp.network;
 
-import com.example.gitmvpapp.model.base.BaseResponse;
+import com.example.gitmvpapp.model.user.User;
 
 import io.reactivex.Single;
 
 public interface Repository {
 
-    Single<BaseResponse> getBaseResponse();
+    Single<User> getUser();
 }

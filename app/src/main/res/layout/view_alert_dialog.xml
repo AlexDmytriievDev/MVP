@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/view_alert_dialog_base_padding">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_white_rounded_big"
+        android:clickable="true"
+        android:filterTouchesWhenObscured="true"
+        android:focusable="true"
+        android:paddingStart="@dimen/view_alert_dialog_base_padding"
+        android:paddingEnd="@dimen/view_alert_dialog_base_padding_end"
+        android:paddingBottom="@dimen/view_alert_dialog_base_padding">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/alertDialogTitle"
+            style="@style/FontTextViewSemiBold"
+            android:layout_marginTop="@dimen/view_alert_dialog_base_margin"
+            android:textSize="@dimen/view_alert_dialog_title_text_size"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Dialog Title"
+            tools:visibility="visible" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/alertDialogDescription"
+            style="@style/FontTextViewRegular"
+            android:layout_marginTop="@dimen/view_alert_dialog_base_margin"
+            android:textSize="@dimen/view_alert_dialog_base_text_size"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/alertDialogTitle"
+            tools:text="Dialog Description"
+            tools:visibility="visible" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/alertDialogCancel"
+            style="@style/FontTextViewRegular"
+            android:layout_marginEnd="@dimen/view_alert_dialog_cancel_margin"
+            android:padding="@dimen/view_alert_dialog_btn_padding"
+            android:text="@string/cancel"
+            android:textColor="@color/boulderDark"
+            android:textSize="@dimen/view_alert_dialog_base_text_size"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/alertDialogConfirm"
+            tools:visibility="visible" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/alertDialogConfirm"
+            style="@style/FontTextViewSemiBold"
+            android:layout_marginTop="@dimen/view_alert_dialog_confirm_margin"
+            android:background="?attr/selectableItemBackground"
+            android:padding="@dimen/view_alert_dialog_btn_padding"
+            android:text="@string/ok"
+            android:textColor="@color/dodgerBlue"
+            android:textSize="@dimen/view_alert_dialog_base_text_size"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/alertDialogDescription" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
