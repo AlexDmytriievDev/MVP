@@ -16,44 +16,50 @@ public class LocalRepositoryImpl implements LocalRepository {
     }
 
     @Override
-    public Single<User> addUser(User newUser) {
-        return Single.just(newUser).flatMap(user -> {
-            database.userDao().addUser(user);
-            return Single.just(user);
-        });
+    public Single<Boolean> addUser(User newUser) {
+        return database.getUserDao().addUser(newUser)
+                .toSingle(() -> true).onErrorReturnItem(false);
     }
 
     @Override
-    public Single<User> getUser() {
-        return database.userDao().getUser().onErrorReturnItem(new User());
+    public Single<User> getSignInUser() {
+        return database.getUserDao().getSignInUser()
+                .defaultIfEmpty(new User()).toSingle();
     }
 
     @Override
-    public Single<List<User>> getUsers() {
-        return database.userDao().getUsers().onErrorReturnItem(new ArrayList<>());
+    public Single<List<User>> getAll() {
+        return database.getUserDao().getUsers()
+                .defaultIfEmpty(new ArrayList<>()).toSingle();
     }
 
     @Override
-    public Single<User> updateUser(User update) {
-        return Single.just(update).flatMap(user -> {
-            database.userDao().updateUser(user);
-            return Single.just(user);
-        });
+    public Single<Boolean> updateUser(User update) {
+        return database.getUserDao().updateUser(update)
+                .toSingle(() -> true).onErrorReturnItem(false);
+    }
+
+    @Override
+    public Single<Boolean> logoutUser() {
+        return getSignInUser().flatMap(user -> {
+            if (user != null && user.isSignIn()) {
+                user.setSignIn(false);
+                return updateUser(user);
+            } else {
+                return Single.just(false);
+            }
+        }).onErrorReturnItem(false);
     }
 
     @Override
     public Single<Boolean> deleteUser(User user) {
-        return Single.just(true).flatMap(success -> {
-            database.userDao().deleteUser(user);
-            return Single.just(success);
-        });
+        return database.getUserDao().deleteUser(user)
+                .toSingle(() -> true).onErrorReturnItem(false);
     }
 
     @Override
     public Single<Boolean> clear() {
-        return Single.just(true).flatMap(success -> {
-            database.userDao().clear();
-            return Single.just(success);
-        });
+        return database.getUserDao().clear()
+                .toSingle(() -> true).onErrorReturnItem(false);
     }
 }

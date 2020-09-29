@@ -107,8 +107,8 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected FragmentTransaction startTransaction() {
         return getSupportFragmentManager().beginTransaction().setCustomAnimations(
-                R.anim.animation_fragment_fade_open, R.anim.animation_ffragment_ade_close,
-                R.anim.animation_fragment_fade_open, R.anim.animation_ffragment_ade_close);
+                R.anim.animation_fragment_fade_open, R.anim.animation_fragment_fade_close,
+                R.anim.animation_fragment_fade_open, R.anim.animation_fragment_fade_close);
     }
 
     private void openSettingsDialog() {

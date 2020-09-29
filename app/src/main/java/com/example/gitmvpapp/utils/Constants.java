@@ -53,6 +53,9 @@ public class Constants {
     public static final String FIRST_NAME = "firstName";
     public static final String LAST_NAME = "lastName";
     public static final String AVATAR_URL = "avatarUrl";
+    public static final String IS_SIGN_IN = "isSignIn";
+    public static final String NICKNAME = "nickname";
+    public static final String PASSWORD = "password";
 
     //  Date
     public static final String GSON_BASE_DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:ssZ";

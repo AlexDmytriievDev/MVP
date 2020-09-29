@@ -34,13 +34,10 @@ public class SplashPresenter extends MvpPresenter<SplashView> implements Lifecyc
 
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
     public void onCreate() {
-        disposables.add(rxUtils.zipWithTimer(localRepository.getUser(), SPLASH_SEC_DELAY)
+        disposables.add(rxUtils.zipWithTimer(localRepository.getSignInUser(), SPLASH_SEC_DELAY)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(this::setupUser, error -> {
-                    Timber.e(error);
-                    getViewState().openLoginScreen();
-                }));
+                .subscribe(this::setupResponse, Timber::e));
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
@@ -48,8 +45,8 @@ public class SplashPresenter extends MvpPresenter<SplashView> implements Lifecyc
         disposables.clear();
     }
 
-    private void setupUser(User user) {
-        if (user != null && user.hasFullName()) {
+    private void setupResponse(User user) {
+        if (user != null && user.isSignIn()) {
             getViewState().openMainScreen();
         } else {
             getViewState().openLoginScreen();

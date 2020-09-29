@@ -8,13 +8,15 @@ import io.reactivex.Single;
 
 public interface LocalRepository {
 
-    Single<User> addUser(User user);
+    Single<Boolean> addUser(User user);
 
-    Single<User> getUser();
+    Single<User> getSignInUser();
 
-    Single<List<User>> getUsers();
+    Single<List<User>> getAll();
 
-    Single<User> updateUser(User user);
+    Single<Boolean> updateUser(User user);
+
+    Single<Boolean> logoutUser();
 
     Single<Boolean> deleteUser(User user);
 
