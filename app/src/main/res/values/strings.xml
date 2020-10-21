@@ -7,7 +7,7 @@
     <string name="app_version">Version</string>
 
     <!--General-->
-    <string name="ok">Ok</string>
+    <string name="ok">OK</string>
     <string name="mvp">MVP</string>
     <string name="error">Error</string>
     <string name="camera">Camera</string>
@@ -21,4 +21,16 @@
     <string name="permissions_permanently_denied">Permanently denied</string>
     <string name="cropped_image_data_empty">Cropped image data is null</string>
     <string name="settings_permission_explanation">To continue need to enable camera permissions</string>
+
+    <!--Login screen-->
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="login">Login</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="please_sign_up">Please sign up</string>
+    <string name="error_user">User is not found</string>
+    <string name="error_empty">Сan\'t be empty</string>
+    <string name="error_email">Incorrect email</string>
+    <string name="error_password">Сan\'t be shorter then 6 characters</string>
+
 </resources>

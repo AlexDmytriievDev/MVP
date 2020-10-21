@@ -1,13 +1,20 @@
 <resources>
 
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:navigationBarColor">@color/pampas</item>
     </style>
 
-    <style name="SplashActivityTheme" parent="AppTheme">
+    <style name="ThemeFullScreen" parent="AppTheme">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <style name="ThemeTransparentStatusBar" parent="AppTheme">
         <item name="colorPrimaryDark">@android:color/transparent</item>
         <item name="android:windowTranslucentStatus">true</item>
     </style>
@@ -17,7 +24,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:includeFontPadding">false</item>
         <item name="android:textColor">@color/capeCod</item>
-        <item name="android:lineSpacingExtra">5sp</item>
+        <item name="android:lineSpacingExtra">@dimen/text_view_line_spacing_extra</item>
         <item name="android:ellipsize">end</item>
     </style>
 
@@ -35,6 +42,26 @@
 
     <style name="FontTextViewBold" parent="ThemeTextView">
         <item name="android:fontFamily">@font/font_inter_bold</item>
+    </style>
+
+    <style name="ThemeTextInputLayout" parent="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/text_input_layout_margin_horizontal</item>
+        <item name="android:layout_marginEnd">@dimen/text_input_layout_margin_horizontal</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/text_input_layout_corner_radius</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/text_input_layout_corner_radius</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/text_input_layout_corner_radius</item>
+        <item name="boxCornerRadiusTopStart">@dimen/text_input_layout_corner_radius</item>
+        <item name="boxStrokeColor">@color/colorAccent</item>
+        <item name="hintTextColor">@color/colorAccent</item>
+        <item name="errorEnabled">true</item>
+    </style>
+
+    <style name="ThemeTextInputEditText" parent="FontTextViewRegular">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:lines">@integer/text_input_layout_lines</item>
     </style>
 
 </resources>
