@@ -20,7 +20,7 @@
         <activity
             android:name=".ui.flow.splash.view.SplashActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/SplashActivityTheme">
+            android:theme="@style/ThemeFullScreen">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,6 +29,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".ui.flow.authorization.login.view.LoginActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ThemeTransparentStatusBar" />
     </application>
 
 </manifest>
