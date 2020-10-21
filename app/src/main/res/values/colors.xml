@@ -12,6 +12,7 @@
     <color name="yellow">#FFEB3B</color>
     <color name="kashmirBlue">#527798</color>
     <color name="shakespeareLight">#D093C4E0</color>
+    <color name="dodgerBlueDark">#0663BF</color>
     <color name="dodgerBlue">#1088ff</color>
     <color name="dodgerBlueLight">#4CA4FB</color>
     <color name="dodgerBlueTransparent">#9269ACFF</color>
@@ -29,7 +30,7 @@
     <color name="boulder">#747474</color>
     <color name="boulderDark">#757575</color>
     <color name="rollingStone">#73797e</color>
-    <color name="lightTransparent">#4CFFFFFF</color>
+    <color name="lightTransparent">#32FFFFFF</color>
     <color name="abbey">#494f55</color>
     <color name="capeCod">#3e4143</color>
     <color name="capeCodTransparent">#263E4143</color>

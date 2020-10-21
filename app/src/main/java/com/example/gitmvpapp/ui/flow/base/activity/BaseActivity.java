@@ -24,7 +24,6 @@ import static com.example.gitmvpapp.utils.InteractionUtils.openSettings;
 @SuppressWarnings("unused")
 public abstract class BaseActivity extends AppCompatActivity {
 
-    private DialogManager dialogManager;
     private PictureManager pictureManager;
     private MvpDelegate<? extends BaseActivity> mvpDelegate;
 
@@ -97,8 +96,8 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected abstract void initDependencies(ApplicationComponent applicationComponent);
 
-    public DialogManager showDialog() {
-        return getDialogManager();
+    public DialogManager.Builder dialog() {
+        return new DialogManager.Builder(this);
     }
 
     public void startCropImage(PictureManager.OnCropImageCallback cropImageCallback) {
@@ -107,24 +106,22 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected FragmentTransaction startTransaction() {
         return getSupportFragmentManager().beginTransaction().setCustomAnimations(
-                R.anim.animation_fragment_fade_open, R.anim.animation_ffragment_ade_close,
-                R.anim.animation_fragment_fade_open, R.anim.animation_ffragment_ade_close);
+                R.anim.animation_fragment_fade_open, R.anim.animation_fragment_fade_close,
+                R.anim.animation_fragment_fade_open, R.anim.animation_fragment_fade_close);
     }
 
     private void openSettingsDialog() {
-        getDialogManager().confirm("", getString(R.string.settings_permission_explanation),
-                isPositive -> {
+        new DialogManager.Builder(this)
+                .setCancelAvailable(false)
+                .setDescription(getString(R.string.settings_permission_explanation))
+                .setListener(isPositive -> {
                     if (isPositive) startActivity(openSettings(this));
-                });
+                })
+                .show();
     }
 
     private void closeDialogs() {
-        getDialogManager().closeDialogs();
-    }
-
-    private DialogManager getDialogManager() {
-        if (dialogManager == null) dialogManager = new DialogManager(this);
-        return dialogManager;
+        DialogManager.closeDialogs();
     }
 
     private PictureManager getPictureManager() {

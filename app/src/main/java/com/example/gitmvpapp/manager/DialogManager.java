@@ -7,11 +7,11 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatDialog;
 
 import com.example.gitmvpapp.R;
-import com.example.gitmvpapp.ui.flow.base.activity.BaseActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,105 +19,111 @@ import java.util.Objects;
 
 public class DialogManager {
 
-    private final Activity activity;
-    private final List<AppCompatDialog> dialogs = new ArrayList<>();
+    private static final List<AppCompatDialog> dialogs = new ArrayList<>();
 
-    public DialogManager(Activity activity) {
-        this.activity = activity;
-    }
+    public static class Builder {
 
-    public void info(String description) {
-        showDialog(false, null, description, null, null, null);
-    }
+        private final View dialogView;
+        private final AppCompatDialog dialog;
 
-    public void info(String description,  DialogClickListener listener) {
-        showDialog(false, null, description, null, null, listener);
-    }
+        private String title;
+        private String description;
+        private String positiveText;
+        private String negativeText;
+        private boolean isCancelAvailable;
+        private DialogClickListener listener;
 
-    public void info(String title, String description, DialogClickListener listener) {
-        showDialog(false, title, description, null, null, listener);
-    }
-
-    public void info(String title,
-                     String description,
-                     String positiveText,
-                      DialogClickListener listener) {
-        showDialog(false, title, description, positiveText, null, listener);
-    }
-
-    public void confirm(String description,  DialogClickListener listener) {
-        showDialog(true, null, description, null, null, listener);
-    }
-
-    public void confirm(String title, String description,  DialogClickListener listener) {
-        showDialog(true, title, description, null, null, listener);
-    }
-
-    public void confirm(String title,
-                        String description,
-                        String positiveText,
-                        String negativeText,
-                        DialogClickListener listener) {
-        showDialog(true, title, description, positiveText, negativeText, listener);
-    }
-
-    private void showDialog(boolean isConfirmation,
-                            String title,
-                            String description,
-                            String positiveText,
-                            String negativeText,
-                             DialogClickListener listener) {
-        View dialogView = activity.getLayoutInflater().inflate(R.layout.view_alert_dialog, null);
-        AppCompatDialog dialog = new AlertDialog.Builder(activity).setView(dialogView).create();
-        Objects.requireNonNull(dialog.getWindow())
-                .setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
-        TextView dialogTitle = dialogView.findViewById(R.id.alertDialogTitle);
-        TextView dialogDescription = dialogView.findViewById(R.id.alertDialogDescription);
-        TextView dialogConfirm = dialogView.findViewById(R.id.alertDialogConfirm);
-        TextView dialogCancel = dialogView.findViewById(R.id.alertDialogCancel);
-
-        if (!TextUtils.isEmpty(positiveText)) dialogConfirm.setText(positiveText);
-        if (!TextUtils.isEmpty(negativeText)) dialogCancel.setText(negativeText);
-
-        if (!TextUtils.isEmpty(title)) {
-            dialogTitle.setText(title);
-            dialogTitle.setVisibility(View.VISIBLE);
+        public Builder(@NonNull Activity activity) {
+            dialogView = activity.getLayoutInflater()
+                    .inflate(R.layout.view_alert_dialog, null);
+            dialog = new AlertDialog.Builder(activity).setView(dialogView).create();
+            Objects.requireNonNull(dialog.getWindow())
+                    .setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         }
 
-        if (!TextUtils.isEmpty(description)) {
-            dialogDescription.setText(description);
-            dialogDescription.setVisibility(View.VISIBLE);
+        public Builder setTitle(String title) {
+            this.title = title;
+            return this;
         }
 
-        dialogConfirm.setOnClickListener(v -> {
-            if (listener != null) {
-                listener.onButtonClick(true);
+        public Builder setDescription(String description) {
+            this.description = description;
+            return this;
+        }
+
+        public Builder setPositiveText(String positiveText) {
+            this.positiveText = positiveText;
+            return this;
+        }
+
+        public Builder setNegativeText(String negativeText) {
+            this.negativeText = negativeText;
+            return this;
+        }
+
+        public Builder setCancelAvailable(boolean cancelAvailable) {
+            isCancelAvailable = cancelAvailable;
+            return this;
+        }
+
+        public Builder setListener(DialogClickListener listener) {
+            this.listener = listener;
+            return this;
+        }
+
+        public void show() {
+            closeDialogs();
+            TextView dialogTitle = dialogView.findViewById(R.id.alertDialogTitle);
+            TextView dialogDescription = dialogView.findViewById(R.id.alertDialogDescription);
+            TextView dialogConfirm = dialogView.findViewById(R.id.alertDialogConfirm);
+            TextView dialogCancel = dialogView.findViewById(R.id.alertDialogCancel);
+
+            if (!TextUtils.isEmpty(positiveText)) dialogConfirm.setText(positiveText);
+            if (!TextUtils.isEmpty(negativeText)) dialogCancel.setText(negativeText);
+
+            if (!TextUtils.isEmpty(title)) {
+                dialogTitle.setText(title);
+                dialogTitle.setVisibility(View.VISIBLE);
             }
-            dialogs.remove(dialog);
-            dialog.dismiss();
-        });
 
-        if (isConfirmation) {
-            dialogCancel.setVisibility(View.VISIBLE);
-            dialogCancel.setOnClickListener(v -> {
+            if (!TextUtils.isEmpty(description)) {
+                dialogDescription.setText(description);
+                dialogDescription.setVisibility(View.VISIBLE);
+            }
+
+            dialogConfirm.setOnClickListener(v -> {
                 if (listener != null) {
-                    listener.onButtonClick(false);
+                    listener.onButtonClick(true);
                 }
                 dialogs.remove(dialog);
                 dialog.dismiss();
             });
-        }
 
-        dialog.setCancelable(false);
-        dialog.setCanceledOnTouchOutside(false);
-        dialogs.add(dialog);
-        dialog.show();
+            if (isCancelAvailable) {
+                dialogCancel.setVisibility(View.VISIBLE);
+                dialogCancel.setOnClickListener(v -> {
+                    if (listener != null) {
+                        listener.onButtonClick(false);
+                    }
+                    dialogs.remove(dialog);
+                    dialog.dismiss();
+                });
+            }
+
+            dialog.setCancelable(false);
+            dialog.setCanceledOnTouchOutside(false);
+            dialogs.add(dialog);
+            dialog.show();
+        }
     }
 
-    public void closeDialogs() {
-        for (AppCompatDialog dialog : dialogs)
-            if (dialog.isShowing()) dialog.dismiss();
+    public static void closeDialogs() {
+        for (AppCompatDialog dialog : dialogs) {
+            if (dialog != null && dialog.isShowing()) {
+                dialog.dismiss();
+            }
+        }
+        dialogs.clear();
     }
 
     public interface DialogClickListener {

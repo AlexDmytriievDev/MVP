@@ -3,7 +3,6 @@ package com.example.gitmvpapp.database;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
-import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
 
@@ -11,26 +10,27 @@ import com.example.gitmvpapp.model.User;
 
 import java.util.List;
 
-import io.reactivex.Single;
+import io.reactivex.Completable;
+import io.reactivex.Maybe;
 
 @Dao
 public interface UserDao {
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void addUser(User user);
-
-    @Query("SELECT * FROM users LIMIT 1")
-    Single<User> getUser();
+    @Insert
+    Completable addUser(User user);
 
     @Query("SELECT * FROM users")
-    Single<List<User>> getUsers();
+    Maybe<List<User>> getUsers();
+
+    @Query("SELECT * FROM users WHERE isSignIn = 1")
+    Maybe<User> getSignInUser();
 
     @Update
-    void updateUser(User user);
+    Completable updateUser(User user);
 
     @Delete
-    void deleteUser(User user);
+    Completable deleteUser(User user);
 
     @Query("DELETE FROM users")
-    void clear();
+    Completable clear();
 }

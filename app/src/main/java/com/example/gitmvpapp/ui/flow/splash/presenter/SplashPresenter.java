@@ -9,6 +9,7 @@ import com.arellomobile.mvp.MvpPresenter;
 import com.example.gitmvpapp.database.LocalRepository;
 import com.example.gitmvpapp.model.User;
 import com.example.gitmvpapp.ui.flow.splash.contract.SplashView;
+import com.example.gitmvpapp.utils.Constants;
 import com.example.gitmvpapp.utils.RxUtils;
 
 import javax.inject.Inject;
@@ -21,8 +22,6 @@ import timber.log.Timber;
 @InjectViewState
 public class SplashPresenter extends MvpPresenter<SplashView> implements LifecycleObserver {
 
-    private static final int SPLASH_SEC_DELAY = 3;
-
     @Inject
     RxUtils rxUtils;
 
@@ -34,13 +33,11 @@ public class SplashPresenter extends MvpPresenter<SplashView> implements Lifecyc
 
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
     public void onCreate() {
-        disposables.add(rxUtils.zipWithTimer(localRepository.getUser(), SPLASH_SEC_DELAY)
+        disposables.add(rxUtils.zipWithTimer(
+                localRepository.getSignInUser(), Constants.DELAY.SPLASH)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(this::setupUser, error -> {
-                    Timber.e(error);
-                    getViewState().openLoginScreen();
-                }));
+                .subscribe(this::setupResponse, Timber::e));
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
@@ -48,8 +45,8 @@ public class SplashPresenter extends MvpPresenter<SplashView> implements Lifecyc
         disposables.clear();
     }
 
-    private void setupUser(User user) {
-        if (user != null && user.hasFullName()) {
+    private void setupResponse(User user) {
+        if (user != null && user.isSignIn()) {
             getViewState().openMainScreen();
         } else {
             getViewState().openLoginScreen();

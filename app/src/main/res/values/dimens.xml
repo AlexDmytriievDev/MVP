@@ -1,16 +1,37 @@
 <resources>
 
+    <!--  General  -->
+    <dimen name="zero_dp">0dp</dimen>
+
     <!--  View Alert Dialog  -->
     <dimen name="view_alert_dialog_base_padding">20dp</dimen>
     <dimen name="view_alert_dialog_base_padding_end">25dp</dimen>
     <dimen name="view_alert_dialog_base_margin">20dp</dimen>
     <dimen name="view_alert_dialog_title_text_size">22sp</dimen>
     <dimen name="view_alert_dialog_base_text_size">18sp</dimen>
+    <dimen name="view_alert_dialog_ok_text_size">16sp</dimen>
     <dimen name="view_alert_dialog_cancel_margin">30dp</dimen>
     <dimen name="view_alert_dialog_btn_padding">5dp</dimen>
     <dimen name="view_alert_dialog_confirm_margin">25dp</dimen>
 
+    <!--  Styles  -->
+    <dimen name="text_view_line_spacing_extra">5sp</dimen>
+    <dimen name="text_input_layout_margin_horizontal">30dp</dimen>
+    <dimen name="text_input_layout_corner_radius">8dp</dimen>
+    <item name="text_input_layout_lines" format="integer" type="integer">1</item>
+
     <!--  Splash screen  -->
     <dimen name="splash_description_text_size">34sp</dimen>
+
+    <!--  Login screen  -->
+    <dimen name="login_email_margin_bottom">20dp</dimen>
+    <dimen name="login_confirm_btn_margin_top">40dp</dimen>
+    <dimen name="login_confirm_btn_padding_horizontal">50dp</dimen>
+    <dimen name="login_confirm_btn_padding_vertical">15dp</dimen>
+    <dimen name="login_sign_up_btn_margin_top">20dp</dimen>
+    <dimen name="login_sign_up_btn_padding_horizontal">25dp</dimen>
+    <dimen name="login_sign_up_btn_padding_vertical">10dp</dimen>
+    <item name="login_email_max_length" format="integer" type="integer">50</item>
+    <item name="login_password_max_length" format="integer" type="integer">20</item>
 
 </resources>

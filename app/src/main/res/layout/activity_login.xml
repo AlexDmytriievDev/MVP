@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/login_email_input_layout"
+        style="@style/ThemeTextInputLayout"
+        android:layout_marginBottom="@dimen/login_email_margin_bottom"
+        android:hint="@string/email"
+        app:layout_constraintBottom_toTopOf="@+id/login_password_input_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:startIconDrawable="@drawable/ic_email">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/login_email_field"
+            style="@style/ThemeTextInputEditText"
+            android:inputType="textEmailAddress"
+            android:maxLength="@integer/login_email_max_length" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/login_password_input_layout"
+        style="@style/ThemeTextInputLayout"
+        android:hint="@string/password"
+        app:counterEnabled="true"
+        app:counterMaxLength="@integer/login_password_max_length"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:startIconDrawable="@drawable/ic_lock">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/login_password_field"
+            style="@style/ThemeTextInputEditText"
+            android:inputType="numberPassword"
+            android:maxLength="@integer/login_password_max_length" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/login_confirm_btn"
+        style="@style/FontTextViewSemiBold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/login_confirm_btn_margin_top"
+        android:background="@drawable/selector_blue_round"
+        android:paddingStart="@dimen/login_confirm_btn_padding_horizontal"
+        android:paddingTop="@dimen/login_confirm_btn_padding_vertical"
+        android:paddingEnd="@dimen/login_confirm_btn_padding_horizontal"
+        android:paddingBottom="@dimen/login_confirm_btn_padding_vertical"
+        android:text="@string/login"
+        android:textAllCaps="true"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_password_input_layout" />
+
+    <TextView
+        android:id="@+id/login_sign_up_btn"
+        style="@style/FontTextViewRegular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/login_sign_up_btn_margin_top"
+        android:background="@drawable/selector_white_round_small"
+        android:paddingStart="@dimen/login_sign_up_btn_padding_horizontal"
+        android:paddingTop="@dimen/login_sign_up_btn_padding_vertical"
+        android:paddingEnd="@dimen/login_sign_up_btn_padding_horizontal"
+        android:paddingBottom="@dimen/login_sign_up_btn_padding_vertical"
+        android:text="@string/sign_up"
+        android:textColor="@color/dodgerBlue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_confirm_btn" />
+
+    <com.example.gitmvpapp.ui.view.LoadingView
+        android:id="@+id/login_loading_view"
+        android:layout_width="@dimen/zero_dp"
+        android:layout_height="@dimen/zero_dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
