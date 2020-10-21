@@ -9,6 +9,7 @@ import com.arellomobile.mvp.MvpPresenter;
 import com.example.gitmvpapp.database.LocalRepository;
 import com.example.gitmvpapp.model.User;
 import com.example.gitmvpapp.ui.flow.splash.contract.SplashView;
+import com.example.gitmvpapp.utils.Constants;
 import com.example.gitmvpapp.utils.RxUtils;
 
 import javax.inject.Inject;
@@ -21,8 +22,6 @@ import timber.log.Timber;
 @InjectViewState
 public class SplashPresenter extends MvpPresenter<SplashView> implements LifecycleObserver {
 
-    private static final int SPLASH_SEC_DELAY = 3;
-
     @Inject
     RxUtils rxUtils;
 
@@ -34,7 +33,8 @@ public class SplashPresenter extends MvpPresenter<SplashView> implements Lifecyc
 
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
     public void onCreate() {
-        disposables.add(rxUtils.zipWithTimer(localRepository.getSignInUser(), SPLASH_SEC_DELAY)
+        disposables.add(rxUtils.zipWithTimer(
+                localRepository.getSignInUser(), Constants.DELAY.SPLASH)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(this::setupResponse, Timber::e));

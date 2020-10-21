@@ -11,6 +11,7 @@ import com.example.gitmvpapp.R;
 import com.example.gitmvpapp.di.component.ApplicationComponent;
 import com.example.gitmvpapp.di.component.DaggerSplashActivityComponent;
 import com.example.gitmvpapp.di.module.SplashActivityModule;
+import com.example.gitmvpapp.ui.flow.authorization.login.view.LoginActivity;
 import com.example.gitmvpapp.ui.flow.base.activity.BaseActivity;
 import com.example.gitmvpapp.ui.flow.splash.contract.SplashView;
 import com.example.gitmvpapp.ui.flow.splash.presenter.SplashPresenter;
@@ -22,7 +23,7 @@ public class SplashActivity extends BaseActivity implements SplashView {
     @InjectPresenter
     SplashPresenter presenter;
 
-    public static Intent createClearIntent(Context context) {
+    public static Intent createIntent(Context context) {
         return new Intent(context, SplashActivity.class)
                 .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
     }
@@ -46,14 +47,13 @@ public class SplashActivity extends BaseActivity implements SplashView {
 
     @Override
     public void openLoginScreen() {
-//        startActivity(LoginActivity.createClearIntent(this));
-//        finish();
+        startActivity(LoginActivity.createIntent(this));
     }
 
     @Override
     public void openMainScreen() {
-//        startActivity(MainActivity.createIntent(this));
-//        finish();
+        //  TODO
+        //  startActivity(MainActivity.createIntent(this));
     }
 
     @Override
@@ -62,7 +62,7 @@ public class SplashActivity extends BaseActivity implements SplashView {
     }
 
     @Override
-    public void showError(String message) {
-        showDialog().info(message);
+    public void showError(String title, String description) {
+        dialog().setTitle(title).setDescription(description).show();
     }
 }
