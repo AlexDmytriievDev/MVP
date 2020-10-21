@@ -45,16 +45,23 @@ public class Constants {
         public final static String HTTPS_URI = "https://";
     }
 
+    public static final class DELAY {
+
+        public final static int SPLASH = 3;
+        public final static int LOGIN = 1;
+        public final static int EDIT_TEXT = 100;
+    }
+
     //  Server
     public static final String ID = "id";
     public static final String CODE = "code";
+    public static final String EMAIL = "email";
     public static final String USERS = "users";
     public static final String MESSAGE = "message";
     public static final String FIRST_NAME = "firstName";
     public static final String LAST_NAME = "lastName";
     public static final String AVATAR_URL = "avatarUrl";
     public static final String IS_SIGN_IN = "isSignIn";
-    public static final String NICKNAME = "nickname";
     public static final String PASSWORD = "password";
 
     //  Date

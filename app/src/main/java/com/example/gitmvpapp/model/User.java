@@ -2,7 +2,6 @@ package com.example.gitmvpapp.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.text.TextUtils;
 
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
@@ -23,8 +22,8 @@ public class User implements Parcelable {
     @ColumnInfo(name = Constants.ID)
     private String id;
 
-    @ColumnInfo(name = Constants.NICKNAME)
-    private String nickname;
+    @ColumnInfo(name = Constants.EMAIL)
+    private String email;
 
     @ColumnInfo(name = Constants.FIRST_NAME)
     private String firstName;
@@ -46,9 +45,9 @@ public class User implements Parcelable {
     }
 
     @Ignore
-    public User(String nickname, String password) {
+    public User(String email, String password) {
         this();
-        this.nickname = nickname;
+        this.email = email;
         this.password = password;
         this.isSignIn = true;
     }
@@ -56,7 +55,7 @@ public class User implements Parcelable {
     @Ignore
     protected User(Parcel in) {
         id = Objects.requireNonNull(in.readString());
-        nickname = in.readString();
+        email = in.readString();
         firstName = in.readString();
         lastName = in.readString();
         avatarUrl = in.readString();
@@ -67,7 +66,7 @@ public class User implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(id);
-        dest.writeString(nickname);
+        dest.writeString(email);
         dest.writeString(firstName);
         dest.writeString(lastName);
         dest.writeString(avatarUrl);
@@ -96,7 +95,7 @@ public class User implements Parcelable {
     public String toString() {
         return "User{" +
                 "id='" + id + '\'' +
-                ", nickname='" + nickname + '\'' +
+                ", email='" + email + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", avatarUrl='" + avatarUrl + '\'' +
@@ -114,12 +113,12 @@ public class User implements Parcelable {
         this.id = id;
     }
 
-    public String getNickname() {
-        return nickname;
+    public String getEmail() {
+        return email;
     }
 
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getFirstName() {

@@ -9,7 +9,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_white_rounded_big"
+        android:background="@drawable/bg_white_round_big"
         android:clickable="true"
         android:filterTouchesWhenObscured="true"
         android:focusable="true"
@@ -62,7 +62,7 @@
             android:padding="@dimen/view_alert_dialog_btn_padding"
             android:text="@string/ok"
             android:textColor="@color/dodgerBlue"
-            android:textSize="@dimen/view_alert_dialog_base_text_size"
+            android:textSize="@dimen/view_alert_dialog_ok_text_size"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/alertDialogDescription" />
